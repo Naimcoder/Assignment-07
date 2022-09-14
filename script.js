@@ -134,7 +134,7 @@ displayHistory();
 setInterval(() => {
   const currentTime = new Date().getTime();
   const timeSpent = (currentTime - startTime) / 1000;
- 
+  const timefix = timeSpent.toFixed(0);
 
 
   document.getElementById("show-time").innerHTML = `${startTime ? timefix : 0} seconds`;
