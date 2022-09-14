@@ -24,14 +24,14 @@ const typeController = (e) => {
   const newLetter = e.key;
 
   // Handle backspace press
- if (newLetter == "Backspace") {
-   userText = userText.slice(0, userText.length - 1);
-   if (display.children[0]) {
-     return display.removeChild(display.lastChild)
-   } else {
-     return;
-   }
- }
+  if (newLetter == "Backspace") {
+    userText = userText.slice(0, userText.length - 1);
+    if (display.children[0]) {
+      return display.removeChild(display.lastChild);
+    } else {
+      return;
+    }
+  }
 
   // these are the valid character we are allowing to type
   const validLetters =
@@ -47,10 +47,14 @@ const typeController = (e) => {
   const newLetterCorrect = validate(newLetter);
 
   if (newLetterCorrect) {
-    display.innerHTML += `<span class="green">${newLetter === " " ? "▪" : newLetter}</span>`;
+    display.innerHTML += `<span class="green">${
+      newLetter === " " ? "▪" : newLetter
+    }</span>`;
   } else {
-    display.innerHTML += `<span class="red">${newLetter === " " ? "▪" : newLetter}</span>`;
-     errorCount++;
+    display.innerHTML += `<span class="red">${
+      newLetter === " " ? "▪" : newLetter
+    }</span>`;
+    errorCount++;
   }
 
   // check if given question text is equal to user typed text
@@ -72,8 +76,8 @@ const gameOver = () => {
   // the current time is the finish time
   // so total time taken is current time - start time
   const finishTime = new Date().getTime();
-  const timeTaken = (finishTime - startTime) / 1000;
-
+  const timeTakens = (finishTime - startTime) / 1000;
+  const timeTaken = timeTakens.toFixed(0);
   // show result modal
   resultModal.innerHTML = "";
   resultModal.classList.toggle("hidden");
@@ -138,5 +142,8 @@ displayHistory();
 setInterval(() => {
   const currentTime = new Date().getTime();
   const timeSpent = (currentTime - startTime) / 1000;
-  const timeFix=timeSpent.toFixed(0)
-  document.getElementById("show-time").innerHTML = `${startTime ? timeFix : 0} seconds`;}, 1000);
+  const timefix = timeSpent.toFixed(0);
+  document.getElementById("show-time").innerHTML = `${
+    startTime ? timefix : 0
+  } seconds`;
+}, 1000);
